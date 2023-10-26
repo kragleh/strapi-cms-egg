@@ -1,0 +1,31 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2023-10-26T12:04:24+02:00",
+    "name": "Strapi CMS",
+    "author": "parker@parkervcp.com",
+    "description": "creates a Strapi CMS instance.",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/parkervcp\/yolks:nodejs_18": "ghcr.io\/parkervcp\/yolks:nodejs_18"
+    },
+    "file_denylist": [],
+    "startup": "\/usr\/local\/bin\/npm run build &&  \/usr\/local\/bin\/npm run develop",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"change this part\"\r\n}",
+        "logs": "{}",
+        "stop": "^^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# NodeJS App Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y git curl jq file unzip make gcc g++ python python-dev libtool\r\n\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\n# Create Strapi using Installer\r\nnpm install -g create-strapi-app@latest\r\nnpx create-strapi-app . --quickstart --no-run\r\n\r\necho -e \"install complete\"\r\nexit 0",
+            "container": "node:18-buster-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": []
+}
